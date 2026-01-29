@@ -567,6 +567,13 @@ outcomes = [
 ]
 add_body_text(slide13, outcomes, top=2.0, font_size=16)
 
-# Save the presentation
-prs.save('/Users/Mudassar.Hakim/tempfiles/XYZ_Mobile_App_Diagnostic.pptx')
-print("Presentation created successfully: XYZ_Mobile_App_Diagnostic.pptx")
+# Save the presentation with timestamp to avoid overwriting
+from datetime import datetime
+import os
+
+timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+output_name = f'XYZ_Mobile_App_Diagnostic_{timestamp}.pptx'
+output_path = f'/Users/Mudassar.Hakim/tempfiles/{output_name}'
+
+prs.save(output_path)
+print(f"Presentation created successfully: {output_name}")
